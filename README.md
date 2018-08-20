@@ -3,7 +3,7 @@ a crawler demo of nodejs
 
 爬虫的主要代码在crawler2.js文件中
 
-里面的代码只是本人这次的一次练习
+里面的代码只是本人的一次练习
 
 不具备通用性
 
