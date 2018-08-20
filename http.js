@@ -10,6 +10,6 @@ http
 		//结束掉响应
 		res.end();
 	})
-	.listen(2018);
+	.listen(2018); 
 
 console.log("server run in localhost:2018");
