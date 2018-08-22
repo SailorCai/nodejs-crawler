@@ -11,5 +11,4 @@ https.createServer(options, function(req, res){
 	res.writeHead(200)
 	res.end('hello https')
 }).listen(8090);
-
 //除此以外，https的get和request使用方法和http一致

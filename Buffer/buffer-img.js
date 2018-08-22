@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-fs.readFile('timg.jpg', function(err, origin_buffer){
+fs.readFile('../timg.jpg', function(err, origin_buffer){
 	console.log(Buffer.isBuffer(origin_buffer))
 
 	fs.writeFile('logo_buffer.jpg', origin_buffer, function(err){
