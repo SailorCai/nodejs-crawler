@@ -15,8 +15,10 @@ a crawler demo of nodejs
 
 遍历对象，通过console.log()在控制台逐行输出结果
 
-##api汇总
-__url__
+## api汇总
+
+### url
+
 url.parse(url, ,  );    //把url字符串转换成对像
 
 url.format(obj);    //把对象转换成url地址
@@ -24,7 +26,7 @@ url.format(obj);    //把对象转换成url地址
 url.resolve(host, path);    //传入主机名和资源路径，生成合法的url地址
 
 
-__querystring__
+### querystring
 
 querystring.stringify(obj);    //把参数的键值对转化成参数字符串（不带问号）
 
@@ -33,7 +35,7 @@ querystring.parse(queryStr);    //把查询字符串序列化成键值对
 querystring.escape(str)/unescape()    //对字符串进行转义和反转义
 
 
-__http__
+### http
 
 http.createServer(function(req, res){    //创建服务器
 
@@ -62,7 +64,7 @@ http.get(url, function(res){    //发送get请求，传入url获取响应数据�
 
 http.request(rul, function(res){});    //待进一步了解
 
-__https__
+### https
 
 var options = {
     key: fs.readFileSync('ssh_key.pem'),    //同步读取私钥文件
@@ -85,7 +87,7 @@ https.createServer(options, function(req, res){
 //除此以外，https的get和request使用方法和http一致
 
 
-__fs：文件系统__
+### fs：文件系统
 fs.writeFile(file,data[, options], callback);    //异步写入文件
 
 fs.writeFileSync(file,data[, options], callback);    //同步写入文件
@@ -115,7 +117,7 @@ fs.rmdir(path, callback);    //异步删除文件夹
 fs.rmdirSync(path);    //同步删除文件夹
 
  
-__events：事件模块__
+### events：事件模块
 
 events模块只提供了一个对象：events.EventEmitter
 
@@ -138,7 +140,7 @@ emiter.removeAllListener(['evenr1']);
 在node中，只要是支持事件响应的核心模块都是EventEmitter的子类，另外我们一般要为会发射error事件的对象设置监听，否则error触发时会导致程序退出；
 
 
-__Buffer：二进制数据缓存区__
+### Buffer：二进制数据缓存区
 
 var buf = new Buffer(num);    //创建指定字节数长度的Buffer实例 buf.length == 8;
 
@@ -172,7 +174,7 @@ base64数据图片数据拼接：
 data:image/png;base64,+base64编码
 
 
-__Stream：流__
+### Stream：流
 
 Readable        Writable/Readable        writable
 
