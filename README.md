@@ -190,6 +190,78 @@ readStream.pause();    //暂停读取流
 
 readStream.resume();    //重新恢复读取
 
+## Nodejs工具模块之 
+
+### OS模块
+OS模块提供了一些基本的系统操作函数
+
+var os = require( 'os' );    //引入
+
+os.tmpdir();    //返回操作系统默认临时文件夹
+
+os.endianness();    //返回CPU的字节序
+
+os.hostname();    //返回操作系统的主机名
+
+os.type();    //返回操作系统名
+
+os.platform();    //返回操作系统名
+
+os.arch();    //返回操作系统CPU架构，可能的值有“x64”、“arm”、“ia32”
+
+os.release();    //返回操作系统的发型版本
+
+os.uptime();    //返回操作系统运行的事件，以秒为单位
+
+os.loadavg();    //返回一个包含1、5、15分钟平均负载的数组
+
+os.totalmem();    //返回系统内存总量，单位为字节
+
+os.freemem();    //返回操作系统空闲内存量
+
+os.cpus();    //返回一个对象数组，包含所安装的每个cpu/内核的信息
+
+os.networkInterfaces();    //获得网络接口列表
+
+os.EOL    //定义了操作系统的行尾符的常量
+
+### path模块
+path模块提供了一些用于处理文件路径的小工具
+
+var path = require( 'path' );
+
+path.normalize(p);    //规范化路径，注意‘..’和‘.’
+
+path.join([path1][ ,path2][ ,...]);    //用于连接路径。该方法的主要用途在于，会正确使用当前系统的路径分隔符，Unix系统是“/”，windows系统是“\”；
+
+path.resolve([from ...], to)    //将to参数解析为绝对路径
+
+path.isAbsolute(path);    //判断参数path是否是绝对路径。
+
+path.relative(from, to);    //用于将相对路径转为绝对路径
+
+path.dirname(p);    //返回路径中代表文件夹的部分
+
+path.basename(p[ , ext]);    //返回路径中最后一部分
+
+path.extname(p)    //返回路径中文件的后缀名
+
+path.parse(pathString);    //返回路径字符串的对象
+
+path.format(pathObject);    //从对象中返回路径字符串
+
+__属性__
+
+path.sep    //平台的文件路径分隔符，“\\”或“/”
+
+path.delimiter    //平台的分隔符，；or“：”
+
+path.posix    //提供上述path的方法，不过总是以posix兼容的方式交互
+
+path.win32    //提供上述path的方法，不过总是以win32兼容的方式交互。
+
+
+
 ### net：网络模块
 
 ### process
