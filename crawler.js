@@ -6,7 +6,7 @@ http.get(url, function(res){
 	var html = '';
 
 	//监听data事件，拼接html数据
-	res.on('data', function(data){
+	res.on('data', function(data){ 
 		html += data;
 	});
 
