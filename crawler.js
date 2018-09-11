@@ -14,6 +14,6 @@ http.get(url, function(res){
 	res.on('end', function(){
 		console.log(html);
 	});
-}).on('error', function(){
+}).on('error', function(){ 
 	console.log('获取课程数据出错！');
 });
