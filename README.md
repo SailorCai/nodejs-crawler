@@ -402,14 +402,100 @@ socket.unref();    //如果这是唯一的活动的服务器，调用unref将允
 socket.ref()    //与unref相反。
 
 
+### 工具模块之：DNS模块
+
+DNS模块用于解析域名。
+var dns = require('dns');    //引入DNS
+dns.lookup(hostname[ , optins], callback);  
+//将域名解析为第一条找到的记录A（IPV4）或AAAA（IPV6）。参数options可以是一个对象或整数。如果没有提供options，IPV4和IPV6都可以。若果options是整数，则必须是4或6
+
+dns.lookupServer(address, port, callback);
+//使用getnameinfo解析传入的地址和端口为域名和服务
+
+dns.resolve(hostname[ , rrtype] , callback);
+//将一个域名解析为一个rrtype指定记录类型的数组
+
+........
+
+估计DNS模块不经常用，此处省去大量DNS方法
+
+
+### 工具模块之：Domain模块
+Domain（域）简化异步代码的异常处理，可以捕捉处理try catch无法捕捉的异常。
+
+var domain = require( 'domain' );
+
+domain模块，把处理多个不同的IO的操作作为一个组。注册事件和回调到domain，当发生一个错误事件或跑出一个错误时，domain对象会被通知，不会丢失上下文环境，也不导致程序错误立即退出，与process.on( 'uncaughtException' );不同。Domain模块可以氛围隐式绑定和显示绑定：
+ 
+1、隐式绑定：把在domain上下文中定义的变量，自动绑定到domain对象。
+
+2、显示绑定：把不是在domain上下文中定义的变量，一代吗的方式绑定到domain对象
+
+方法：
+domain.run( function );
+//在域的上下文提供的函数，隐式的绑定了所有的事件分发器，计时器和底层请求。
+
+domain.add(emitter);
+//显式的增加事件
+
+domain.remove(emitter);
+//删除事件
+
+domain.bind(callback);
+//返回的函数是一个对于所提供的回调函数的包装函数。当调用这个返回的函数时，多有被抛出的错误都会被导向到这个域的error事件。
+
+domain.intercept( callback );
+//和domain.bind(callback);类似。除了捕捉被抛出的错误外，他还会拦截Error对象作为参数传递到这个函数
+
+domain.enter();
+//进入一个异步调用的上下文，绑定到domain。
+
+domain.exit();
+//退出当前的domain，切换到不同的链的异步调用的上下文，对应domain.enter();
+
+domain.dispose();
+//释放一个domain对象，让node进程回收这部分资源。
+
+domain.create();
+//返回一个domain对象
+
+属性：
+domain.members
+//已加入domain对象的域定时器和事件发射器的数组
+
+
 ### process
 
+在nodejs中全局对象是global，无需引入就可使用
+
+global最根本的作用是作为全局变量的宿主。
+
+process是一个全局变量，即global对象的属性。
+process是用来描述当前Node.js进程状态的对象，提供了一个与操作系统的简单接口。通常在你写本地命令行程序的时候，少不了要和它打交道。下面将会介绍process对象的一些常用的成员方法。
+
+process.argv 是命令行参数数组，第一个元素是node，第二个元素是脚本文件名，从第三个元素开始每个元素是一个运行参数
+
+将以下代码存储为argv.js，通过一下命令运行将得到以下输出结果：
+console.log( process.argv );
+
+process.stdout是标准输出流，通常我们使用的console.log() 向标准输出打印字符，而 process.stdout.write(); 函数提供了更底层的接口。
+
+process.stdin 是标准输入流，初始时它是被暂停的，想要从标准输入读取数据，你必须恢复流，并手动编写流的事件响应函数。
+process.stdin.resume();
+process.stdin.on('data' , function(data){
+    process.stdout.write('read from console: ' + data.toString());
+});
+
+process.nextTick(callback);
+//为事件循环设置一项任务，Node.js会在下次事件循环响应是调用callback。
 
 
+### Web模块
 
+首先你应该了解什么是web服务器
+Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序。
 
-
-
+Web服务器的基本功能就是提供Web信息浏览服务。它只需支持HTTP协议、HTML文档格式及URL，与客户端的网络浏览器配合。
 
 
 
